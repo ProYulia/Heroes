@@ -17,6 +17,7 @@ public class Healer extends Base {
     @Override
     public void step (ArrayList<Base> enemies) {
         if (getState() == States.DEAD) return;
+        setState(States.ATTACK);
         int index = findWeakest();
         Base comrade = getGroup().get(index);
         if (comrade.getHealth() / comrade.getMaxHealth() < 0.50)

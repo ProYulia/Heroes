@@ -37,6 +37,7 @@ public abstract class Base extends Sprite implements BaseInterface {
 
     public void setState(States state) {
         this.state = state;
+        System.out.println(state);
     }
 
     public void setPosition(Position position) {
@@ -92,6 +93,7 @@ public abstract class Base extends Sprite implements BaseInterface {
     }
 
     protected void getAttack(Base hero) {
+        setState(States.ATTACK);
         if (attack == hero.protection && speed < position.getDist(hero.getPosition())) hero.health -=(damage[0]+damage[1])/4;
         if (attack == hero.protection) hero.health -= (damage[0]+damage[1])/2;
         if (attack > hero.protection && speed < position.getDist(hero.getPosition())) hero.health -= damage[1]/2;

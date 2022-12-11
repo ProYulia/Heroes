@@ -1,10 +1,14 @@
 package com.mygdx.game.Heroes;
 
 import com.badlogic.gdx.graphics.Texture;
+import com.badlogic.gdx.graphics.g2d.TextureRegion;
+import com.mygdx.game.Assets;
+import com.mygdx.game.GameAnimation;
 
 import java.util.ArrayList;
 
 public class Monk extends Healer {
+    GameAnimation currentAnimation;
 
     public Monk(ArrayList<Base> group, int x, int y, int pivot) {
         super(12, 7, new int[]{-4,-4}, 30, 5, States.ALIVE);
@@ -13,14 +17,28 @@ public class Monk extends Healer {
         super.texture = new Texture("Wizard.png");
     }
 
-//    public void drawMonk(Batch spriteBatch) {
-//        update(Gdx.graphics.getDeltaTime());
-//        super.draw(spriteBatch);
-//    }
-//
-//    private void update(float delta) {
-//        setX(position.x*delta);
-//        setY(position.y*delta);
-//    }
+    public TextureRegion getMonkTexture() {
+        if (currentAnimation == null || currentAnimation.isFinished()) {
+            switch (getState()) {
+                case ALIVE:
+                    currentAnimation = Assets.monkStandingAnimation;
+                    break;
+                case DEAD:
+                    currentAnimation = Assets.monkDyingAnimation;
+                    break;
+                case ATTACK:
+                    currentAnimation = Assets.monkAttackingAnimation;
+                    break;
+
+            }
+        }
+        return currentAnimation.getFrame();
+    }
+
+    public GameAnimation getCurrentAnimation() {
+        return currentAnimation;
+    }
+
+
 
 }

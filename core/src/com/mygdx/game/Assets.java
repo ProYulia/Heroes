@@ -10,19 +10,56 @@ import com.badlogic.gdx.graphics.g2d.TextureAtlas;
 public class Assets {
     public static BitmapFont font;
     public static Texture background;
-    private static TextureAtlas atlas;
-    static GameAnimation spearmanStandingAnimation;
+    private static TextureAtlas spearmanAtlas, monkAtlas, peasantAtlas, xbowmanAtlas, wizardAtlas, robberAtlas, sniperAtlas;
+     public static GameAnimation spearmanStandingAnimation, spearmanDyingAnimation, spearmanAttackingAnimation;
+     public static GameAnimation monkStandingAnimation, monkDyingAnimation, monkAttackingAnimation;
+     public static GameAnimation peasantStandingAnimation, peasantDyingAnimation;
+     public static GameAnimation xbowmanStandingAnimation, xbowmanDyingAnimation, xbowmanAttackingAnimation;
+     public static GameAnimation wizardStandingAnimation, wizardDyingAnimation, wizardAttackingAnimation;
+    public static GameAnimation robberStandingAnimation, robberDyingAnimation, robberAttackingAnimation;
+    public static GameAnimation sniperStandingAnimation, sniperDyingAnimation, sniperAttackingAnimation;
+
 
 
     public static Texture loadTexture (String file) {
         return new Texture(Gdx.files.internal(file));
-
     }
 
     public static void load() {
-        atlas = new TextureAtlas("Lancer.atlas");
-        spearmanStandingAnimation = new GameAnimation(atlas,"Knight_01__ATTACK", 10, Animation.PlayMode.LOOP);
-        spearmanStandingAnimation.setTime(Gdx.graphics.getDeltaTime());
+        spearmanAtlas = new TextureAtlas("lancer.atlas");
+        spearmanStandingAnimation = new GameAnimation(spearmanAtlas,"Elf_02__IDLE", 9, Animation.PlayMode.LOOP);
+        spearmanDyingAnimation = new GameAnimation(spearmanAtlas, "Elf_02__DIE", 9, Animation.PlayMode.NORMAL);
+        spearmanAttackingAnimation = new GameAnimation(spearmanAtlas, "Elf_02__ATTACK", 9, Animation.PlayMode.LOOP);
+
+        monkAtlas = new TextureAtlas("monk.atlas");
+        monkStandingAnimation = new GameAnimation(monkAtlas, "Fairy_03__IDLE", 9, Animation.PlayMode.LOOP);
+        monkDyingAnimation = new GameAnimation(monkAtlas, "Fairy_03__DIE", 9, Animation.PlayMode.NORMAL);
+        monkAttackingAnimation = new GameAnimation(monkAtlas, "Fairy_03__ATTACK", 9, Animation.PlayMode.LOOP);
+
+        peasantAtlas = new TextureAtlas("Peasant.atlas");
+        peasantStandingAnimation = new GameAnimation(peasantAtlas, "0_Fallen_Angels_Idle Blinking", 9,Animation.PlayMode.LOOP);
+        peasantDyingAnimation = new GameAnimation(peasantAtlas, "0_Fallen_Angels_Dying", 9, Animation.PlayMode.NORMAL);
+
+        xbowmanAtlas = new TextureAtlas("crossbow.atlas");
+        xbowmanStandingAnimation = new GameAnimation(xbowmanAtlas, "Warrior_03__IDLE", 9,Animation.PlayMode.LOOP);
+        xbowmanAttackingAnimation = new GameAnimation(xbowmanAtlas, "Warrior_03__ATTACK", 9, Animation.PlayMode.LOOP);
+        xbowmanDyingAnimation = new GameAnimation(xbowmanAtlas, "Warrior_03__DIE", 9, Animation.PlayMode.NORMAL);
+
+        wizardAtlas = new TextureAtlas("wizard.atlas");
+        wizardStandingAnimation = new GameAnimation(wizardAtlas, "Elf_03__IDLE", 9, Animation.PlayMode.LOOP);
+        wizardAttackingAnimation = new GameAnimation(wizardAtlas, "Elf_03__ATTACK", 9, Animation.PlayMode.LOOP);
+        wizardDyingAnimation = new GameAnimation(wizardAtlas, "Elf_03__DIE", 9, Animation.PlayMode.NORMAL);
+
+        robberAtlas = new TextureAtlas("robber.atlas");
+        robberStandingAnimation = new GameAnimation(robberAtlas, "Troll_03_1_IDLE", 9, Animation.PlayMode.LOOP);
+        robberAttackingAnimation = new GameAnimation(robberAtlas, "Troll_03_1_ATTACK", 9, Animation.PlayMode.LOOP);
+        robberDyingAnimation = new GameAnimation(robberAtlas, "Troll_03_1_DIE", 9, Animation.PlayMode.NORMAL);
+
+        sniperAtlas = new TextureAtlas("sniper.atlas");
+        sniperStandingAnimation = new GameAnimation(sniperAtlas, "Elf_01__IDLE", 9, Animation.PlayMode.LOOP);
+        sniperAttackingAnimation = new GameAnimation(sniperAtlas, "Elf_01__ATTACK", 9, Animation.PlayMode.LOOP);
+        sniperDyingAnimation = new GameAnimation(sniperAtlas, "Elf_01__DIE", 9, Animation.PlayMode.NORMAL);
+
         background = loadTexture("battlefield2.png");
         font = new BitmapFont();
 

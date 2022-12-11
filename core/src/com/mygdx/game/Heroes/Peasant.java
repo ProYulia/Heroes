@@ -1,11 +1,15 @@
 package com.mygdx.game.Heroes;
 
 import com.badlogic.gdx.graphics.Texture;
+import com.badlogic.gdx.graphics.g2d.TextureRegion;
+import com.mygdx.game.Assets;
+import com.mygdx.game.GameAnimation;
 
 import java.util.ArrayList;
 
 public class Peasant extends Warrior {
     boolean delivery;
+    GameAnimation currentAnimation;
 
     public Peasant(ArrayList<Base> group, int x, int y, int pivot) {
         super(1, 1, new int[]{1,1}, 1, 3, States.ALIVE);
@@ -13,6 +17,23 @@ public class Peasant extends Warrior {
         delivery = true;
         super.position = new Position(x, y);
         super.texture = new Texture("Peasant.png");
+    }
+    public TextureRegion getPeasantTexture() {
+        if (currentAnimation == null || currentAnimation.isFinished()) {
+            switch (getState()) {
+                case ALIVE:
+                    currentAnimation = Assets.peasantStandingAnimation;
+                    break;
+                case DEAD:
+                    currentAnimation = Assets.peasantDyingAnimation;
+                    break;
+            }
+        }
+        return currentAnimation.getFrame();
+    }
+
+    public GameAnimation getCurrentAnimation() {
+        return currentAnimation;
     }
 
     @Override
