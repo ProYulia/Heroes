@@ -10,12 +10,13 @@ import java.util.ArrayList;
 public class Robber extends Warrior {
     GameAnimation currentAnimation;
     boolean delivery;
-    public Robber(ArrayList<Base> group, int x, int y, int pivot) {
+    public Robber(ArrayList<Base> group, int x, int y, int direction) {
         super(8, 3, new int[]{2,4}, 10, 6, States.ALIVE);
         super.group = group;
         delivery = false;
         super.position = new Position(x, y);
         super.texture = new Texture("Wizard.png");
+        super.direction = direction;
     }
     public TextureRegion getRobberTexture() {
         if (currentAnimation == null || currentAnimation.isFinished()) {
@@ -29,6 +30,10 @@ public class Robber extends Warrior {
                 case ATTACK:
                     currentAnimation = Assets.robberAttackingAnimation;
                     break;
+                case WALK:
+                    currentAnimation = Assets.robberWalkingAnimation;
+//                case HURT:
+//                    currentAnimation = Assets.robberHurtAnimation;
 
             }
         }

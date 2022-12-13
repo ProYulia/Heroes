@@ -20,7 +20,7 @@ public class GameScreen extends ScreenAdapter {
             world.setPriority();
     }
     public void update (float deltaTime) {
-        if (deltaTime > 0.1f) deltaTime = 0.1f;
+        world.update();
     }
 
     @Override
@@ -28,5 +28,7 @@ public class GameScreen extends ScreenAdapter {
         update(delta);
         updateStep();
         renderer.render();
+        if (World.gameOver)
+            game.setScreen(new GameOverScreen(game));
     }
 }

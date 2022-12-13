@@ -10,12 +10,13 @@ import java.util.ArrayList;
 public class Spearman extends Warrior {
     boolean delivery;
     GameAnimation currentAnimation;
-    public Spearman(ArrayList<Base> group, int x, int y, int pivot) {
+    public Spearman(ArrayList<Base> group, int x, int y, int direction) {
         super(4, 5, new int[]{1,3}, 10, 4, States.ALIVE);
         super.group = group;
         delivery = false;
         super.position = new Position(x, y);
         super.texture = new Texture("Spearman.png");
+        super.direction = direction;
     }
 
     public TextureRegion getSpearmanTexture() {
@@ -30,7 +31,11 @@ public class Spearman extends Warrior {
                 case ATTACK:
                     currentAnimation = Assets.spearmanAttackingAnimation;
                     break;
-
+                case WALK:
+                    currentAnimation = Assets.spearmanWalkingAnimation;
+                    break;
+                case HURT:
+                    currentAnimation = Assets.spearmanHurtAnimation;
             }
         }
         return currentAnimation.getFrame();

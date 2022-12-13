@@ -10,11 +10,12 @@ import java.util.ArrayList;
 public class Monk extends Healer {
     GameAnimation currentAnimation;
 
-    public Monk(ArrayList<Base> group, int x, int y, int pivot) {
+    public Monk(ArrayList<Base> group, int x, int y, int direction) {
         super(12, 7, new int[]{-4,-4}, 30, 5, States.ALIVE);
         super.group = group;
         super.position = new Position(x, y);
         super.texture = new Texture("Wizard.png");
+        super.direction = direction;
     }
 
     public TextureRegion getMonkTexture() {
@@ -29,6 +30,8 @@ public class Monk extends Healer {
                 case ATTACK:
                     currentAnimation = Assets.monkAttackingAnimation;
                     break;
+                case HURT:
+                    currentAnimation = Assets.monkHurtAnimation;
 
             }
         }

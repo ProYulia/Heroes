@@ -10,7 +10,7 @@ public class DesktopLauncher {
 		Lwjgl3ApplicationConfiguration config = new Lwjgl3ApplicationConfiguration();
 		config.setForegroundFPS(60);
 		config.setTitle("SuperHeroes");
-		config.setWindowedMode(1024, 720);
+		config.setWindowedMode(1000, 720);
 		config.setResizable(false);
 		new Lwjgl3Application(new SuperHeroes(), config);
 	}

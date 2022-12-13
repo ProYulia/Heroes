@@ -11,12 +11,13 @@ public class Peasant extends Warrior {
     boolean delivery;
     GameAnimation currentAnimation;
 
-    public Peasant(ArrayList<Base> group, int x, int y, int pivot) {
-        super(1, 1, new int[]{1,1}, 1, 3, States.ALIVE);
+    public Peasant(ArrayList<Base> group, int x, int y, int direction) {
+        super(1, 1, new int[]{1,1}, 100, 3, States.ALIVE);
         super.group = group;
         delivery = true;
         super.position = new Position(x, y);
         super.texture = new Texture("Peasant.png");
+        super.direction = direction;
     }
     public TextureRegion getPeasantTexture() {
         if (currentAnimation == null || currentAnimation.isFinished()) {
@@ -27,6 +28,8 @@ public class Peasant extends Warrior {
                 case DEAD:
                     currentAnimation = Assets.peasantDyingAnimation;
                     break;
+                case HURT:
+                    currentAnimation = Assets.peasantHurtAnimation;
             }
         }
         return currentAnimation.getFrame();

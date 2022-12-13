@@ -10,11 +10,12 @@ import java.util.ArrayList;
 public class Sniper extends Shooter {
     GameAnimation currentAnimation;
 
-    public Sniper(ArrayList<Base> group, int x, int y, int pivot) {
+    public Sniper(ArrayList<Base> group, int x, int y, int direction) {
         super(12, 10, new int[]{8,10}, 15, 9, States.ALIVE, 32);
         super.group = group;
         super.position = new Position(x, y);
         super.texture = new Texture("Sniper.png");
+        super.direction = direction;
     }
     public TextureRegion getSniperTexture() {
         if (currentAnimation == null || currentAnimation.isFinished()) {
@@ -28,7 +29,8 @@ public class Sniper extends Shooter {
                 case ATTACK:
                     currentAnimation = Assets.sniperAttackingAnimation;
                     break;
-
+                case HURT:
+                    currentAnimation = Assets.sniperHurtAnimation;
             }
         }
         return currentAnimation.getFrame();

@@ -21,4 +21,5 @@ public class GameAnimation {
     public void reset() {
         time = 0f;
     }
+    
 }

@@ -9,11 +9,12 @@ import java.util.ArrayList;
 
 public class Wizard extends Healer {
     GameAnimation currentAnimation;
-    public Wizard(ArrayList<Base> group, int x, int y, int pivot) {
+    public Wizard(ArrayList<Base> group, int x, int y, int direction) {
         super(17, 12, new int[]{-5,-5}, 30, 9, States.ALIVE);
         super.group = group;
         super.position = new Position(x, y);
         super.texture = new Texture("Wizard.png");
+        super.direction = direction;
     }
     public TextureRegion getWizardTexture() {
         if (currentAnimation == null || currentAnimation.isFinished()) {
@@ -27,6 +28,8 @@ public class Wizard extends Healer {
                 case ATTACK:
                     currentAnimation = Assets.wizardAttackingAnimation;
                     break;
+                case HURT:
+                    currentAnimation = Assets.wizardHurtAnimation;
 
             }
         }

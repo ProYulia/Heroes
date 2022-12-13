@@ -1,8 +1,12 @@
 package com.mygdx.game.Heroes;
 
+import com.badlogic.gdx.Gdx;
+import com.mygdx.game.World;
+
 import java.util.ArrayList;
 
 public class Warrior extends Base {
+
     public Warrior(int attack, int protection, int[] damage, double health, int speed, States state) {
         super(attack, protection, damage, health, speed, state);
     }
@@ -17,7 +21,8 @@ public class Warrior extends Base {
                 index = i;
             }
         }
-        System.out.println(getClass().getSimpleName() + "->" + enemies.get(index).getClass().getSimpleName());//
+        System.out.println(getClass().getSimpleName() + "->" + enemies.get(index).getClass().getSimpleName() +
+                enemies.get(index).getHealth());//
         return enemies.get(index);
     }
 
@@ -26,21 +31,36 @@ public class Warrior extends Base {
         if (getState().equals(States.DEAD)) return;
 
         Base aim = findAim(enemies);
-        if (getPosition().getDist(aim.getPosition()) < 190) getAttack(aim);
-        else move(enemies, aim);
+        if (getPosition().getDist(aim.getPosition()) < 170) {
+            getAttack(aim);
+        }
+        else {
+            move(enemies, aim);
+            setState(States.WALK);
+        }
+
     }
     private void move(ArrayList<Base> enemies, Base aim) {
         int x = getPosition().x;
         int y = getPosition().y;
 
-        if (aim.getPosition().y > y && checkPosition(new Position(x, y+100)) && (y+100 < 1025))
-            setPosition(new Position(x, y+100));
-        if (aim.getPosition().y < y && checkPosition(new Position(x, y-100)) && (y-100 > 0))
-            setPosition(new Position(x, y-100));
-        if (aim.getPosition().x > x && checkPosition(new Position(x+100, y)) && (x+100 < 1025))
-            setPosition(new Position(x+100, y));
-        if ((aim.getPosition().x < x) && (checkPosition(new Position(x-100, y))) && (x-100 > 0))
-            setPosition(new Position(x-100, y));
+        if (aim.getDestination().y > y && checkPosition(new Position(x, y+100)) && (y+100 < 850)) {
+            setDestination(new Position(x, y+100));
+        }
+        if (aim.getDestination().y < y && checkPosition(new Position(x, y-100)) && (y-100 > 0)) {
+            setDestination(new Position(x, y-100));
+        }
+
+        if (aim.getDestination().x > x && checkPosition(new Position(x+100, y)) && (x+100 < 850)) {
+            setDestination(new Position(x+100, y));
+            setDirection(1);
+        }
+
+        if ((aim.getDestination().x < x) && (checkPosition(new Position(x-100, y))) && (x-100 > 0)) {
+            setDestination(new Position(x-100, y));
+            setDirection(-1);
+        }
+
     }
 
     private boolean checkPosition(Position pos) {

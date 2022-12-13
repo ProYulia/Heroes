@@ -11,11 +11,12 @@ public class Xbowman extends Shooter {
     GameAnimation currentAnimation;
 
 
-    public Xbowman(ArrayList<Base> group, int x, int y, int pivot) {
+    public Xbowman(ArrayList<Base> group, int x, int y, int direction) {
         super(6, 3, new int[]{2,3}, 10, 4, States.ALIVE, 16);
         super.group = group;
         super.position = new Position(x, y);
         super.texture = new Texture("Xbowman.png");
+        super.direction = direction;
     }
     public TextureRegion getXbowmanTexture() {
         if (currentAnimation == null || currentAnimation.isFinished()) {
@@ -29,6 +30,8 @@ public class Xbowman extends Shooter {
                 case ATTACK:
                     currentAnimation = Assets.xbowmanAttackingAnimation;
                     break;
+                case HURT:
+                    currentAnimation = Assets.xbowmanHurtAnimation;
 
             }
         }

@@ -4,6 +4,8 @@ public enum States {
     ALIVE,
     DEAD,
     USED,
-    ATTACK
+    ATTACK,
+    WALK,
+    HURT
 }
 
