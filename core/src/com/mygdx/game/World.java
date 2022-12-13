@@ -56,9 +56,8 @@ public class World {
             if (darkSide.get(i).getState() == States.DEAD)
                 count2++;
         }
-
         if (count == whiteSide.size() || count2 == darkSide.size())
-            gameOver =true;
+            gameOver = true;
     }
 
 

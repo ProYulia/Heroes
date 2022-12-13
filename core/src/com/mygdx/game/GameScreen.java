@@ -3,6 +3,11 @@ package com.mygdx.game;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Input;
 import com.badlogic.gdx.ScreenAdapter;
+import com.badlogic.gdx.graphics.g3d.model.Animation;
+
+import java.util.Timer;
+import java.util.TimerTask;
+import java.util.concurrent.TimeUnit;
 
 public class GameScreen extends ScreenAdapter {
     SuperHeroes game;
@@ -29,6 +34,17 @@ public class GameScreen extends ScreenAdapter {
         updateStep();
         renderer.render();
         if (World.gameOver)
-            game.setScreen(new GameOverScreen(game));
+            gameOver();
     }
+
+    private void gameOver() {
+        Timer timer = new Timer();
+        timer.schedule(new TimerTask() {
+            @Override
+            public void run() {
+                game.setScreen(new GameOverScreen(game));
+            }
+        }, 2500);
+    }
+
 }
