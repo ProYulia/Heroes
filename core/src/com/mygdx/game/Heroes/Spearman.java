@@ -11,7 +11,7 @@ public class Spearman extends Warrior {
     boolean delivery;
     GameAnimation currentAnimation;
     public Spearman(ArrayList<Base> group, int x, int y, int direction) {
-        super(4, 5, new int[]{1,3}, 10, 4, States.ALIVE);
+        super(4, 5, new int[]{1,3}, 200, 4, States.ALIVE);
         super.group = group;
         delivery = false;
         super.position = new Position(x, y);

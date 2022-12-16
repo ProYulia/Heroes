@@ -10,7 +10,7 @@ import java.util.ArrayList;
 public class Wizard extends Healer {
     GameAnimation currentAnimation;
     public Wizard(ArrayList<Base> group, int x, int y, int direction) {
-        super(17, 12, new int[]{-5,-5}, 30, 9, States.ALIVE);
+        super(17, 12, new int[]{-5,-5}, 300, 9, States.ALIVE);
         super.group = group;
         super.position = new Position(x, y);
         super.texture = new Texture("Wizard.png");

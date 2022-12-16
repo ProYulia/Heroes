@@ -11,7 +11,7 @@ public class Monk extends Healer {
     GameAnimation currentAnimation;
 
     public Monk(ArrayList<Base> group, int x, int y, int direction) {
-        super(12, 7, new int[]{-4,-4}, 30, 5, States.ALIVE);
+        super(12, 7, new int[]{-4,-4}, 300, 5, States.ALIVE);
         super.group = group;
         super.position = new Position(x, y);
         super.texture = new Texture("Wizard.png");

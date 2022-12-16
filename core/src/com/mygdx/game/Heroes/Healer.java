@@ -1,5 +1,7 @@
 package com.mygdx.game.Heroes;
 
+import com.mygdx.game.Assets;
+
 import java.util.ArrayList;
 
 public class Healer extends Base {
@@ -28,8 +30,10 @@ public class Healer extends Base {
         else revive();
     }
     private void attack(int aim, ArrayList<Base> enemies ) {
-        if (aim != -1)
+        if (aim != -1) {
             enemies.get(aim).setHealth(enemies.get(aim).getHealth() + getDamage()[0]);
+            Assets.hitSound.play();
+        }
     }
     private void revive() {
         for (Base comrade : getGroup()) {

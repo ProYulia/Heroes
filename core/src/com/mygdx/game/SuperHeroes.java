@@ -3,6 +3,7 @@ package com.mygdx.game;
 import com.badlogic.gdx.Game;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
+import com.mygdx.game.Heroes.MenuScreen;
 
 
 public class SuperHeroes extends Game {
@@ -12,7 +13,8 @@ public class SuperHeroes extends Game {
 	public void create () {
 		batch = new SpriteBatch();
 		Assets.load();
-		setScreen(new GameScreen(this));
+//		setScreen(new GameScreen(this));
+		setScreen(new MenuScreen(this));
 	}
 
 	@Override

@@ -11,7 +11,7 @@ public class Sniper extends Shooter {
     GameAnimation currentAnimation;
 
     public Sniper(ArrayList<Base> group, int x, int y, int direction) {
-        super(12, 10, new int[]{8,10}, 15, 9, States.ALIVE, 32);
+        super(12, 10, new int[]{8,10}, 150, 9, States.ALIVE, 32);
         super.group = group;
         super.position = new Position(x, y);
         super.texture = new Texture("Sniper.png");

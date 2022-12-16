@@ -2,6 +2,7 @@ package com.mygdx.game.Heroes;
 
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.Sprite;
+import com.mygdx.game.Assets;
 
 import java.util.ArrayList;
 
@@ -123,6 +124,7 @@ public abstract class Base extends Sprite implements BaseInterface {
     protected void getAttack(Base hero) {
         setState(States.ATTACK);
         hero.setState(States.HURT);
+        Assets.xbowSound.play();
         if (attack == hero.protection && speed < position.getDist(hero.getPosition())) hero.health -=(damage[0]+damage[1])/4;
         if (attack == hero.protection) hero.health -= (damage[0]+damage[1])/2;
         if (attack > hero.protection && speed < position.getDist(hero.getPosition())) hero.health -= damage[1]/2;

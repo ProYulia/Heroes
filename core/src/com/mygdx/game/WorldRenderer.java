@@ -29,23 +29,23 @@ public class WorldRenderer {
 
     private void drawHeroes() {
         batch.begin();
-//        drawXbowman();
-//        drawMonk();
+        drawXbowman();
+        drawMonk();
         drawSpearman();
 
-//        drawSniper();
+        drawSniper();
         drawRobber();
-//        drawWizard();
-//        drawPeasant();
+        drawWizard();
+        drawPeasant();
 
         world.getSpearman().getCurrentAnimation().setTime(Gdx.graphics.getDeltaTime());
-//        world.getMonk_1().getCurrentAnimation().setTime(Gdx.graphics.getDeltaTime());
-//        world.getPeasant_1().getCurrentAnimation().setTime(Gdx.graphics.getDeltaTime());
-//        world.getPeasant_2().getCurrentAnimation().setTime(Gdx.graphics.getDeltaTime());
-//        world.getXbowman_1().getCurrentAnimation().setTime(Gdx.graphics.getDeltaTime());
-//        world.getWizard_1().getCurrentAnimation().setTime(Gdx.graphics.getDeltaTime());
+        world.getMonk_1().getCurrentAnimation().setTime(Gdx.graphics.getDeltaTime());
+        world.getPeasant_1().getCurrentAnimation().setTime(Gdx.graphics.getDeltaTime());
+        world.getPeasant_2().getCurrentAnimation().setTime(Gdx.graphics.getDeltaTime());
+        world.getXbowman_1().getCurrentAnimation().setTime(Gdx.graphics.getDeltaTime());
+        world.getWizard_1().getCurrentAnimation().setTime(Gdx.graphics.getDeltaTime());
         world.getRobber_1().getCurrentAnimation().setTime(Gdx.graphics.getDeltaTime());
-//        world.getSniper_1().getCurrentAnimation().setTime(Gdx.graphics.getDeltaTime());
+        world.getSniper_1().getCurrentAnimation().setTime(Gdx.graphics.getDeltaTime());
         batch.end();
     }
     private void draw (Base hero, TextureRegion region, int rotate) {

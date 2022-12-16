@@ -1,14 +1,13 @@
 package com.mygdx.game;
 
 import com.mygdx.game.Heroes.*;
-
 import java.util.ArrayList;
 import java.util.Collections;
 
 public class World {
     public ArrayList<Base> whiteSide;
     public ArrayList<Base> darkSide;
-    private Spearman spearman_1;
+    private Spearman spearman_1, spearman_2;
     private Monk monk_1;
     private Peasant peasant_1, peasant_2;
     private Xbowman xbowman_1;
@@ -16,6 +15,7 @@ public class World {
     private Robber robber_1;
     private Sniper sniper_1;
     public static boolean gameOver;
+    public static boolean game;
 
 
     public World() {
@@ -60,23 +60,21 @@ public class World {
             gameOver = true;
     }
 
-
     private void generateScene(){
         int n = 20;
         int width = 1000;
-        spearman_1 = new Spearman(whiteSide, 0, 0 + n, 1);
-//        monk_1 = new Monk(whiteSide, 0, 150 + n, 1);
-//        peasant_1 = new Peasant(whiteSide, 0, 250 + n, 1);
-//        xbowman_1 = new Xbowman(whiteSide, 0, 350 + n, 1);
-//        Collections.addAll(whiteSide, spearman_1,monk_1,peasant_1, xbowman_1);
-        Collections.addAll(whiteSide,spearman_1);
+        spearman_1 = new Spearman(whiteSide, 0, 50 + n, 1);
+        monk_1 = new Monk(whiteSide, 0, 150 + n, 1);
+        peasant_1 = new Peasant(whiteSide, 0, 250 + n, 1);
+        xbowman_1 = new Xbowman(whiteSide, 0, 350 + n, 1);
 
-//        peasant_2 = new Peasant(darkSide, width-n*10, 50 + n, -1);
-//        wizard_1 = new Wizard(darkSide, width - n*10, 150 + n, -1);
+        Collections.addAll(whiteSide, spearman_1,monk_1,peasant_1, xbowman_1);
+
+        peasant_2 = new Peasant(darkSide, width-n*10, 50 + n, -1);
+        wizard_1 = new Wizard(darkSide, width - n*10, 150 + n, -1);
         robber_1 = new Robber(darkSide, width - n*10, 250 + n, -1);
-//        sniper_1 = new Sniper (darkSide, width - n*10, 350 + n, -1);
-//        Collections.addAll(darkSide, peasant_2,wizard_1, robber_1, sniper_1);
-        Collections.addAll(darkSide, robber_1);
+        sniper_1 = new Sniper (darkSide, width - n*10, 350 + n, -1);
+        Collections.addAll(darkSide, peasant_2,wizard_1, robber_1, sniper_1);
     }
 
     public void setPriority() {
@@ -91,24 +89,20 @@ public class World {
             String clazz = whiteSide.get(i).getClass().toString();
             if (clazz.contains("Spearman")) {
                 whiteSide.get(i).step(darkSide);
-				System.out.println(whiteSide.get(i).getPosition().toString());
             }
             clazz = darkSide.get(i).getClass().toString();
             if (clazz.contains("Robber")) {
                 darkSide.get(i).step(whiteSide);
-                System.out.println(darkSide.get(i).getPosition().toString());
             }
         }
         for (int i = 0; i < whiteSide.size(); i++) {
             String clazz = whiteSide.get(i).getClass().toString();
             if (clazz.contains("Monk")) {
                 whiteSide.get(i).step(darkSide);
-//				System.out.println(clazz);
             }
             clazz = darkSide.get(i).getClass().toString();
             if (clazz.contains("Wizard")) {
                 darkSide.get(i).step(whiteSide);
-//				System.out.println(clazz);
             }
         }
         for (int i = 0; i < whiteSide.size(); i++) {

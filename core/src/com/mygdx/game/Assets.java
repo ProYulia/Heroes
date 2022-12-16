@@ -1,16 +1,24 @@
 package com.mygdx.game;
 
 import com.badlogic.gdx.Gdx;
+import com.badlogic.gdx.audio.Music;
+import com.badlogic.gdx.audio.Sound;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.Animation;
 import com.badlogic.gdx.graphics.g2d.BitmapFont;
 import com.badlogic.gdx.graphics.g2d.TextureAtlas;
 
 
+
 public class Assets {
     public static BitmapFont font;
+    public static Texture menu;
     public static Texture background;
     public static Texture gameOverBackground;
+    public static Music music;
+    public static Sound hitSound;
+
+    public static Sound xbowSound;
     private static TextureAtlas spearmanAtlas, monkAtlas, peasantAtlas, xbowmanAtlas, wizardAtlas, robberAtlas, sniperAtlas;
     public static GameAnimation spearmanStandingAnimation, spearmanDyingAnimation, spearmanAttackingAnimation, spearmanWalkingAnimation, spearmanHurtAnimation;
     public static GameAnimation monkStandingAnimation, monkDyingAnimation, monkAttackingAnimation, monkHurtAnimation;
@@ -70,9 +78,17 @@ public class Assets {
         sniperDyingAnimation = new GameAnimation(sniperAtlas, "Elf_01__DIE", 9, Animation.PlayMode.NORMAL);
         sniperHurtAnimation = new GameAnimation(sniperAtlas, "Elf_01__HURT", 9, Animation.PlayMode.NORMAL);
 
+        menu = new Texture("helloScreen.png");
         background = loadTexture("battleground.png");
         gameOverBackground = new Texture("sky2.png");
         font = new BitmapFont();
+        music = Gdx.audio.newMusic(Gdx.files.internal("Theme.mp3"));
+        music.setVolume(0.5f);
+        hitSound = Gdx.audio.newSound(Gdx.files.internal("punch.wav"));
+    
+        xbowSound = Gdx.audio.newSound(Gdx.files.internal("crossbow.wav"));
+
+
 
     }
 

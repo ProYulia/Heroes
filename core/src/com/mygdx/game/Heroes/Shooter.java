@@ -23,7 +23,6 @@ public class Shooter extends Base {
         shoot--;
         Base aim = findAim(group);
         getAttack(aim);
-        System.out.println(getClass().getSimpleName() + "->" + aim.getClass().getSimpleName());//
 
 
     }

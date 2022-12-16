@@ -3,11 +3,9 @@ package com.mygdx.game;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Input;
 import com.badlogic.gdx.ScreenAdapter;
-import com.badlogic.gdx.graphics.g3d.model.Animation;
-
 import java.util.Timer;
 import java.util.TimerTask;
-import java.util.concurrent.TimeUnit;
+
 
 public class GameScreen extends ScreenAdapter {
     SuperHeroes game;
@@ -18,6 +16,8 @@ public class GameScreen extends ScreenAdapter {
         this.game = game;
         world = new World();
         renderer = new WorldRenderer(game.batch, world);
+        Assets.music.setVolume(0.1f);
+
     }
 
     private void updateStep(){

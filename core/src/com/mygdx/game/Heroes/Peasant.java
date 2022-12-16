@@ -12,7 +12,7 @@ public class Peasant extends Warrior {
     GameAnimation currentAnimation;
 
     public Peasant(ArrayList<Base> group, int x, int y, int direction) {
-        super(1, 1, new int[]{1,1}, 100, 3, States.ALIVE);
+        super(1, 1, new int[]{1,1}, 10, 3, States.ALIVE);
         super.group = group;
         delivery = true;
         super.position = new Position(x, y);

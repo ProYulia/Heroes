@@ -1,6 +1,7 @@
 package com.mygdx.game.Heroes;
 
 import com.badlogic.gdx.Gdx;
+import com.mygdx.game.Assets;
 import com.mygdx.game.World;
 
 import java.util.ArrayList;
@@ -33,6 +34,7 @@ public class Warrior extends Base {
         Base aim = findAim(enemies);
         if (getPosition().getDist(aim.getPosition()) < 170) {
             getAttack(aim);
+            Assets.hitSound.play();
         }
         else {
             move(enemies, aim);
